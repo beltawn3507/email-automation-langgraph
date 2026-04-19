@@ -1,0 +1,239 @@
+APEXSCALE DIGITAL — AGENCY KNOWLEDGE BASE
+
+1. OVERVIEW
+ApexScale Digital is a full-service growth and technology agency specializing in performance marketing, product engineering, and AI-driven automation solutions. The agency works with startups, SMBs, and enterprise clients to design, build, and scale digital products and customer acquisition systems.
+
+Founded in 2019, ApexScale operates as a remote-first organization with distributed teams across India, Europe, and North America.
+
+---
+
+2. CORE SERVICES
+
+2.1 PERFORMANCE MARKETING
+- Paid Ads (Google Ads, Meta Ads, LinkedIn Ads)
+- Search Engine Optimization (SEO)
+- Conversion Rate Optimization (CRO)
+- Email Marketing Campaigns
+- Funnel Design and Optimization
+- Retargeting and Audience Segmentation
+
+2.2 WEB & PRODUCT DEVELOPMENT
+- Full-stack Web Applications (MERN, Next.js)
+- Mobile App Development (React Native, Flutter)
+- API Development & Integration
+- SaaS Product Development
+- UI/UX Design (Figma-based workflows)
+- CMS Development (Headless CMS, WordPress)
+
+2.3 AI & AUTOMATION SOLUTIONS
+- Custom AI Chatbots (customer support, lead generation)
+- Workflow Automation (Zapier, n8n, custom pipelines)
+- Email Automation Agents (LLM-based)
+- Document Processing (OCR + NLP pipelines)
+- Internal tools powered by LLMs
+
+2.4 BRANDING & DESIGN
+- Brand Identity Design
+- Logo & Visual Systems
+- Social Media Creatives
+- Landing Page Design
+
+---
+
+3. INDUSTRIES SERVED
+- SaaS & Tech Startups
+- E-commerce & D2C Brands
+- EdTech Platforms
+- Healthcare & Wellness
+- FinTech
+- Real Estate
+
+---
+
+4. PRICING STRUCTURE
+
+4.1 PERFORMANCE MARKETING
+- Starter Plan: $800/month (up to $5k ad spend)
+- Growth Plan: $1,500/month (up to $20k ad spend)
+- Scale Plan: Custom pricing (above $20k ad spend)
+- Additional: 10%–15% of ad spend as management fee
+
+4.2 DEVELOPMENT SERVICES
+- Hourly Rate: $25–$60/hour depending on complexity
+- Landing Page: $300–$800
+- Full Website: $1,500–$5,000
+- SaaS MVP: $5,000–$20,000+
+
+4.3 AI & AUTOMATION
+- Chatbot Setup: $500–$3,000
+- Custom AI Agents: $2,000–$10,000+
+- Automation Pipelines: $300–$2,500
+
+4.4 DESIGN SERVICES
+- Logo Design: $100–$500
+- Branding Package: $500–$2,000
+- UI/UX Design: $10–$40/hour
+
+---
+
+5. ENGAGEMENT MODELS
+- Monthly Retainer
+- Fixed Project
+- Dedicated Team Model
+- Consultation-Based (hourly)
+
+---
+
+6. ONBOARDING PROCESS
+1. Initial Discovery Call (30–60 minutes)
+2. Requirement Analysis
+3. Proposal & Timeline Sharing
+4. Contract Signing
+5. Kickoff Meeting
+6. Project Execution Begins
+
+---
+
+7. COMMUNICATION & TOOLS
+- Slack (primary communication)
+- Zoom / Google Meet (calls)
+- Notion (documentation)
+- Jira / Trello (task tracking)
+- GitHub (code repositories)
+
+---
+
+8. TURNAROUND TIME
+- Landing Page: 3–7 days
+- Website: 2–4 weeks
+- SaaS MVP: 4–12 weeks
+- AI Automation: 1–4 weeks
+
+---
+
+9. SUPPORT & MAINTENANCE
+- 7-day free post-delivery support
+
+Monthly plans:
+- Basic: $100/month
+- Advanced: $300/month
+- Enterprise: Custom
+
+Includes:
+- Bug fixes
+- Minor updates
+- Performance monitoring
+
+---
+
+10. REFUND POLICY
+- No refunds after project kickoff
+- Partial refund available before work begins (minus processing fees)
+- Milestone-based projects are non-refundable once milestone is delivered
+
+---
+
+11. REVISIONS POLICY
+- 2–3 free revisions depending on project scope
+- Additional revisions billed hourly
+
+---
+
+12. DATA SECURITY & PRIVACY
+- NDA available upon request
+- GDPR-compliant processes
+- Data encryption in transit and at rest
+- No client data shared with third parties
+
+---
+
+13. CLIENT RESPONSIBILITIES
+- Provide clear requirements
+- Timely feedback within 48 hours
+- Provide necessary access (accounts, APIs, etc.)
+
+---
+
+14. WORKING HOURS
+- Monday to Friday
+- 10:00 AM – 7:00 PM (IST)
+- Limited weekend support for enterprise clients
+
+---
+
+15. CONTACT INFORMATION
+- Email: hello@apexscale.digital
+- Support: support@apexscale.digital
+- Website: www.apexscale.digital
+
+---
+
+16. FAQs
+
+Q: Do you guarantee results in marketing?
+A: No, but we follow data-driven strategies to maximize ROI.
+
+Q: Can I upgrade my plan later?
+A: Yes, plans are flexible and can be upgraded anytime.
+
+Q: Do you work internationally?
+A: Yes, we work with global clients.
+
+Q: What tech stack do you use?
+A: MERN, Next.js, Node.js, Python, AWS, and modern cloud tools.
+
+Q: Do you provide hosting?
+A: We assist with setup, but hosting costs are separate.
+
+Q: How do payments work?
+A: 50% upfront and 50% on completion for fixed projects. Monthly billing for retainers.
+
+---
+
+17. LIMITATIONS
+- No guarantee on ad platform approvals
+- Third-party API limitations apply
+- Timeline may vary based on client delays
+
+---
+
+18. UNIQUE SELLING POINTS
+- AI-first approach to automation
+- Startup-friendly pricing
+- Fast turnaround time
+- Combined technical + marketing expertise
+
+---
+
+19. ESCALATION PROCESS
+- Level 1: Account Manager
+- Level 2: Project Lead
+- Level 3: Operations Head
+
+Response Times:
+- Standard: 24 hours
+- Urgent: 4–8 hours
+
+---
+
+20. CANCELLATION POLICY
+- 15-day notice required for retainers
+- Immediate cancellation for breach of contract
+
+---
+
+21. ADD-ONS
+- Dedicated Account Manager: $300/month
+- Priority Support: $200/month
+- Advanced Analytics Dashboard: $150/month
+
+---
+
+22. CASE STUDY
+A SaaS client increased conversions by 35% in 3 months using optimized landing pages and targeted ad campaigns.
+
+---
+
+23. LEGAL
+- All deliverables remain agency property until full payment
+- Source code ownership transferred after final payment

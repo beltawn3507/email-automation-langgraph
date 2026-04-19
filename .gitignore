@@ -1,0 +1,22 @@
+
+tools/credentials.json
+tools/token.json
+tools/token.pickle
+
+.env
+.env.*
+
+
+.venv/
+venv/
+env/
+
+
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Database files
+db/
+*.sqlite3
