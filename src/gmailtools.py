@@ -17,24 +17,25 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 
 class GmailToolsClass:
     def __init__(self):
-        self.project_root = Path(__file__).resolve().parents[1]
+        self.project_root = Path(__file__).resolve().parents[1] 
         self.tools_dir = self.project_root / "tools"
         self.service = self._get_gmail_service()
-        
+    
+    #return full email info for the email which does not have a draft or which has not been processes
+    #or whose sender is me
     def fetch_unanswered_emails(self, max_results=50):
         """
         Fetches all emails included in unanswered threads.
-
         @param max_results: Maximum number of recent emails to fetch
         @return: List of dictionaries, each representing a thread with its emails
         """
         try:
-            recent_emails = self.fetch_recent_emails(max_results)
+            recent_emails = self.fetch_recent_emails(max_results) #used function fetch recent emails
             if not recent_emails: return []
             
-            drafts = self.fetch_draft_replies()
+            drafts = self.fetch_draft_replies() #used function fetch draft replies
 
-            threads_with_drafts = {draft['threadId'] for draft in drafts}
+            threads_with_drafts = {draft['threadId'] for draft in drafts} 
 
             seen_threads = set()
             unanswered_emails = []
@@ -42,7 +43,7 @@ class GmailToolsClass:
                 thread_id = email['threadId']
                 if thread_id not in seen_threads and thread_id not in threads_with_drafts:
                     seen_threads.add(thread_id)
-                    email_info = self._get_email_info(email['id'])
+                    email_info = self._get_email_info(email['id']) #fetches all the email data by providing message Id
                     if self._should_skip_email(email_info):
                         continue
                     unanswered_emails.append(email_info)
@@ -52,16 +53,14 @@ class GmailToolsClass:
             print(f"An error occurred: {e}")
             return []
 
+    # fetch last 8 hours email and queries from the list of messages and returns the list
+    # return only metadata not full email
     def fetch_recent_emails(self, max_results=50):
         try:
-            
             now = datetime.now()
-            delay = now - timedelta(hours=8)
-
-            
+            delay = now - timedelta(hours=8)            
             after_timestamp = int(delay.timestamp())
             before_timestamp = int(now.timestamp())
-
             
             query = f"after:{after_timestamp} before:{before_timestamp}"
             results = self.service.users().messages().list(
@@ -75,6 +74,7 @@ class GmailToolsClass:
             print(f"An error occurred while fetching emails: {error}")
             return []
         
+    #Get all drafts currently in Gmail
     def fetch_draft_replies(self):
         """
         Fetches all draft email replies from Gmail.
@@ -99,7 +99,6 @@ class GmailToolsClass:
         try:
            
             message = self._create_reply_message(initial_email, reply_text)
-
        
             draft = self.service.users().drafts().create(
                 userId="me", body={"message": message}
@@ -147,7 +146,9 @@ class GmailToolsClass:
 
         return body
 
-        
+   # this function creates a gmail api client
+   #this function will check wether cred is expired or not . or is it first login 
+   #if it is first login it will open a browser . It returns a 
     def _get_gmail_service(self):
         creds = None
         token_path = self.tools_dir / "token.json"
@@ -166,14 +167,17 @@ class GmailToolsClass:
             with token_path.open('w') as token:
                 token.write(creds.to_json())
         
-        return build('gmail', 'v1', credentials=creds)
+        return build('gmail', 'v1', credentials=creds) #creates Gmail API client
     
+    # checks if the sender of the email is me or not 
     def _should_skip_email(self, email_info):
         my_email = os.getenv("MY_EMAIL", "").strip().lower()
         if not my_email:
             return False
         return my_email in email_info['sender'].lower()
 
+    # sends body , sender , threadId , messageId,Subject of the mail
+    #takes the mail Id as input
     def _get_email_info(self, msg_id):
         message = self.service.users().messages().get(
             userId="me", id=msg_id, format="full"
@@ -192,6 +196,9 @@ class GmailToolsClass:
             "body": self._get_email_body(payload),
         }
     
+    #accepts the payload as arguement and returns the body of the mail 
+    #uses the function to strip all the content from html and uses clean_body text to return 
+    #clean text data
     def _get_email_body(self, payload):
         """
         Extract the email body, prioritizing text/plain over text/html.
@@ -227,6 +234,7 @@ class GmailToolsClass:
 
         return self._clean_body_text(body)
 
+    #use beautifulsoup to remove the tags and convert to raw data
     def _extract_main_content_from_html(self, html_content):
         """
         Extract main visible content from HTML.

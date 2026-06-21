@@ -31,7 +31,6 @@ class Nodes:
     def categorize_email(self, state: GraphState) -> GraphState:
         """Categorizes the current email using the categorize_email agent."""
         print(Fore.YELLOW + "Checking email category...\n" + Style.RESET_ALL)
-        
 
         current_email = state["emails"][-1]
         result = self.agents.categorize_email.invoke({"email": current_email.body})

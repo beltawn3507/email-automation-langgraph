@@ -11,7 +11,8 @@ class Email(BaseModel):
     sender: str = Field(..., description="Email address of the sender")
     subject: str = Field(..., description="Subject line of the email")
     body: str = Field(..., description="Body content of the email")
-    
+
+#contains all the state of the graph which will be changed by the nodes. 
 class GraphState(TypedDict):
     emails: List[Email]
     current_email: Email
