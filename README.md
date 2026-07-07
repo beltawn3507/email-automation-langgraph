@@ -116,18 +116,7 @@ streamlit run streamlit_app.py   # interactive demo UI
 
 ---
 
-## ⚠️ Notes & Limitations
 
-- Replies are saved as **Gmail drafts only** — nothing is auto-sent, by design.
-- Currently runs as a single-pass script; scheduling (cron / GitHub Actions) would be needed for continuous operation.
-- Default LLM is local (Ollama) for zero API cost during development — Groq/Gemini clients are already included in `requirements.txt` for a cloud-hosted version.
-
-## 🗺️ Possible Next Steps
-
-- Add automated tests for the routing/categorization logic
-- Swap in a hosted LLM provider for a live public demo
-- Add a scheduler for continuous polling instead of single-pass runs
-- Expand the RAG source beyond a single text file (multi-doc ingestion)
 
 ---
 
