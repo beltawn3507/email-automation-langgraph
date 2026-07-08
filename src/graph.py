@@ -11,6 +11,8 @@ class Workflow():
         # define all graph nodes
         workflow.add_node("load_inbox_emails", nodes.load_new_emails)
         workflow.add_node("is_email_inbox_empty", nodes.is_email_inbox_empty)
+        workflow.add_node("screen_for_threats",nodes.screen_for_threats)
+        workflow.add_node("flag_suspicious_email", nodes.flag_suspicious_email)
         workflow.add_node("categorize_email", nodes.categorize_email)
         workflow.add_node("construct_rag_queries", nodes.construct_rag_queries)
         workflow.add_node("retrieve_from_rag", nodes.retrieve_from_rag)
@@ -28,10 +30,23 @@ class Workflow():
             "is_email_inbox_empty",
             nodes.check_new_emails,
             {
-                "process": "categorize_email",
+                "process": "screen_for_threats",
                 "empty": END
             }
         )
+
+        workflow.add_conditional_edges(
+            "screen_for_threats",
+            nodes.route_after_threat_screen,
+            {
+                "suspicious": "flag_suspicious_email",
+                "safe": "categorize_email"
+            }
+        )
+
+        workflow.add_edge("flag_suspicious_email", "is_email_inbox_empty")
+
+
 
         # route email based on category
         workflow.add_conditional_edges(

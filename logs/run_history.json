@@ -42,5 +42,17 @@
     "rejected_count": 0,
     "rewrite_count": 0,
     "drafts_created_count": 0
+  },
+  {
+    "timestamp": "2026-07-08 16:27:30",
+    "total_fetched": 6,
+    "total_processed": 4,
+    "enquiry_count": 1,
+    "feedback_count": 1,
+    "unrelated_count": 0,
+    "rejected_count": 0,
+    "flagged_count": 4,
+    "rewrite_count": 0,
+    "drafts_created_count": 2
   }
 ]

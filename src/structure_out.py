@@ -2,6 +2,22 @@ from pydantic import BaseModel, Field
 from typing import List
 from enum import Enum
 
+class ThreatType(str, Enum):
+    phishing = "phishing"
+    prompt_injection = "prompt_injection"
+    spam = "spam"
+    none = "none"
+ 
+ 
+class ThreatScreenOutput(BaseModel):
+    threat_type: ThreatType = Field(
+        ...,
+        description="The type of threat detected, or 'none' if the email is safe to process normally."
+    )
+    reason: str = Field(
+        ...,
+        description="Brief explanation of why this email was flagged or judged safe."
+    )
 
 class EmailCategory(str, Enum):
     product_enquiry = "product_enquiry"

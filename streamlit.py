@@ -70,11 +70,12 @@ def render_metrics(state: dict) -> None:
     row1[2].metric("Unread / Remaining", remaining)
     row1[3].metric("Drafts Created", state.get("drafts_created_count", 0))
 
-    row2 = st.columns(4)
+    row2 = st.columns(5)
     row2[0].metric("Product Enquiries", state.get("enquiry_count", 0))
     row2[1].metric("Feedback / Complaints", state.get("feedback_count", 0))
     row2[2].metric("Unrelated (skipped)", state.get("unrelated_count", 0))
     row2[3].metric("Rejected (max retries)", state.get("rejected_count", 0))
+    row2[4].metric("Flagged (spam/phishing)", state.get("flagged_count", 0))
 
 
 def render_current_email(state: dict, key_suffix: str) -> None:
@@ -187,6 +188,7 @@ def record_completed_run(final_state: dict) -> None:
             "feedback_count": final_state.get("feedback_count", 0),
             "unrelated_count": final_state.get("unrelated_count", 0),
             "rejected_count": final_state.get("rejected_count", 0),
+            "flagged_count": final_state.get("flagged_count", 0),
             "rewrite_count": final_state.get("rewrite_count", 0),
             "drafts_created_count": final_state.get("drafts_created_count", 0),
         }
@@ -195,12 +197,43 @@ def record_completed_run(final_state: dict) -> None:
 
 
 def render_analytics_tab() -> None:
-    st.subheader("Current Run")
+    history = load_run_history()
+
+    st.subheader("Lifetime Totals (persisted across restarts)")
+    st.caption(
+        "These numbers are read from logs/run_history.json on disk, so they survive "
+        "closing the app, restarting Streamlit, or a fresh 'Run Workflow' click. "
+        "This is the file-based equivalent of localStorage for a server-side Streamlit app - "
+        "actual browser localStorage isn't available/reliable here since this runs as a Python process, not client-side JS."
+    )
+    if history:
+        totals = {
+            key: sum(row.get(key, 0) for row in history)
+            for key in (
+                "total_fetched", "total_processed", "enquiry_count", "feedback_count",
+                "unrelated_count", "rejected_count", "flagged_count", "drafts_created_count",
+            )
+        }
+        lt_row1 = st.columns(4)
+        lt_row1[0].metric("Total Fetched (all-time)", totals["total_fetched"])
+        lt_row1[1].metric("Total Processed (all-time)", totals["total_processed"])
+        lt_row1[2].metric("Drafts Created (all-time)", totals["drafts_created_count"])
+        lt_row1[3].metric("Runs Logged", len(history))
+
+        lt_row2 = st.columns(4)
+        lt_row2[0].metric("Enquiries (all-time)", totals["enquiry_count"])
+        lt_row2[1].metric("Feedback/Complaints (all-time)", totals["feedback_count"])
+        lt_row2[2].metric("Rejected (all-time)", totals["rejected_count"])
+        lt_row2[3].metric("Flagged spam/phishing (all-time)", totals["flagged_count"])
+    else:
+        st.info("No completed runs logged yet - lifetime totals will appear here after your first run.")
+
+    st.divider()
+    st.subheader("Current Run (this session)")
     render_metrics(st.session_state.get("last_state") or {})
 
     st.divider()
     st.subheader("Historical Runs")
-    history = load_run_history()
     if not history:
         st.info("No completed runs logged yet. History is saved automatically when a run finishes.")
         return
