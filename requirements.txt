@@ -18,4 +18,4 @@ uvicorn
 gunicorn
 fastapi
 streamlit
-langchain_google_genai 
+pandas

@@ -13,7 +13,7 @@ class Nodes:
         print(Fore.YELLOW + "Loading new emails...\n" + Style.RESET_ALL)
         recent_emails = self.gmail_tools.fetch_unanswered_emails()
         emails = [Email(**email) for email in recent_emails]
-        return {"emails": emails}
+        return {"emails": emails,"total_fetched": len(emails)}
     
     def check_new_emails(self, state: GraphState) -> str:
         """Checks if there are new emails to process."""
@@ -34,11 +34,21 @@ class Nodes:
 
         current_email = state["emails"][-1]
         result = self.agents.categorize_email.invoke({"email": current_email.body})
+        category = result.category.value
         print(Fore.MAGENTA + f"Email category: {result.category.value}" + Style.RESET_ALL)
         
+        category_counts = {}
+        if category == "product_enquiry":
+            category_counts["enquiry_count"] = state.get("enquiry_count", 0) + 1
+        elif category == "unrelated":
+            category_counts["unrelated_count"] = state.get("unrelated_count", 0) + 1
+        else:
+            category_counts["feedback_count"] = state.get("feedback_count", 0) + 1
+
         return {
             "email_category": result.category.value,
-            "current_email": current_email
+            "current_email": current_email,
+            **category_counts,
         }
     
 
@@ -151,7 +161,10 @@ class Nodes:
         print(Fore.YELLOW + "Creating draft email...\n" + Style.RESET_ALL)
         self.gmail_tools.create_draft_reply(state["current_email"], state["generated_email"])
         
-        return {"retrieved_documents": "", "trials": 0}
+        return {"retrieved_documents": "",
+                 "trials": 0,
+                 "drafts_created_count": state.get("drafts_created_count", 0) + 1,
+                }
 
 
 
@@ -167,5 +180,6 @@ class Nodes:
         """Skip unrelated email and remove from emails list."""
         print("Skipping unrelated email...\n")
         state["emails"].pop()
+        state["total_processed"] = state.get("total_processed", 0) + 1
         return state
 

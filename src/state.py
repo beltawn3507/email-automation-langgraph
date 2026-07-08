@@ -11,8 +11,7 @@ class Email(BaseModel):
     sender: str = Field(..., description="Email address of the sender")
     subject: str = Field(..., description="Subject line of the email")
     body: str = Field(..., description="Body content of the email")
-
-#contains all the state of the graph which will be changed by the nodes. 
+    
 class GraphState(TypedDict):
     emails: List[Email]
     current_email: Email
@@ -23,3 +22,42 @@ class GraphState(TypedDict):
     writer_messages: Annotated[list, add_messages]
     sendable: bool
     trials: int
+    total_fetched: int          
+    total_processed: int       
+    enquiry_count: int         
+    feedback_count: int        
+    unrelated_count: int        
+    rejected_count: int         
+    rewrite_count: int          
+    drafts_created_count: int   
+
+
+def build_initial_state() -> GraphState:
+    """Fresh GraphState for the start of a run (used by main.py and the Streamlit dashboard)."""
+    return {
+        "emails": [],
+        "current_email": {
+            "id": "",
+            "threadId": "",
+            "messageId": "",
+            "references": "",
+            "sender": "",
+            "subject": "",
+            "body": "",
+        },
+        "email_category": "",
+        "generated_email": "",
+        "rag_queries": [],
+        "retrieved_documents": "",
+        "writer_messages": [],
+        "sendable": False,
+        "trials": 0,
+        "total_fetched": 0,
+        "total_processed": 0,
+        "enquiry_count": 0,
+        "feedback_count": 0,
+        "unrelated_count": 0,
+        "rejected_count": 0,
+        "rewrite_count": 0,
+        "drafts_created_count": 0,
+    }

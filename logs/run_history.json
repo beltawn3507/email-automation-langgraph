@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2026-07-08 11:51:45",
+    "total_fetched": 1,
+    "total_processed": 1,
+    "enquiry_count": 0,
+    "feedback_count": 0,
+    "unrelated_count": 1,
+    "rejected_count": 0,
+    "rewrite_count": 0,
+    "drafts_created_count": 0
+  },
+  {
+    "timestamp": "2026-07-08 12:26:08",
+    "total_fetched": 5,
+    "total_processed": 1,
+    "enquiry_count": 2,
+    "feedback_count": 2,
+    "unrelated_count": 1,
+    "rejected_count": 0,
+    "rewrite_count": 0,
+    "drafts_created_count": 4
+  },
+  {
+    "timestamp": "2026-07-08 12:34:04",
+    "total_fetched": 0,
+    "total_processed": 0,
+    "enquiry_count": 0,
+    "feedback_count": 0,
+    "unrelated_count": 0,
+    "rejected_count": 0,
+    "rewrite_count": 0,
+    "drafts_created_count": 0
+  },
+  {
+    "timestamp": "2026-07-08 12:34:10",
+    "total_fetched": 0,
+    "total_processed": 0,
+    "enquiry_count": 0,
+    "feedback_count": 0,
+    "unrelated_count": 0,
+    "rejected_count": 0,
+    "rewrite_count": 0,
+    "drafts_created_count": 0
+  }
+]
